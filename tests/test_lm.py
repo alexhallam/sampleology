@@ -91,6 +91,11 @@ def test_linear_model_fit(housing_data):
     assert all(isinstance(coef, (int, float)) for coef in fitted_model.coefficients.values())
     assert isinstance(fitted_model.intercept, (int, float))
 
+    # Check that the three main dataframes are created
+    assert fitted_model.results_df is not None
+    assert fitted_model.residuals_summary_wide is not None
+    assert fitted_model.overall_stats_df is not None
+
 
 def test_linear_model_predict(housing_data):
     """Test making predictions with fitted model."""
@@ -118,7 +123,10 @@ def test_linear_model_summary(housing_data):
     assert summary["intercept"] == model.intercept
     assert summary["coefficients"] == model.coefficients
     assert summary["feature_names"] == model.feature_names
-    assert summary["n_features"] == 3
+    assert summary["n_features"] == 4  # Intercept + 3 variables
+    assert "results_df" in summary
+    assert "residuals_summary_wide" in summary
+    assert "overall_stats_df" in summary
 
 
 def test_linear_model_score(housing_data):
