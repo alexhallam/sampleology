@@ -1,0 +1,36 @@
+[project]
+name = "sampleology"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "formulaic>=1.2.0",
+    "hypothesis>=6.138.1",
+    "jax>=0.7.0",
+    "pytest>=8.4.1",
+    "tidy-viewer-py>=0.2.96",
+]
+
+[dependency-groups]
+dev = [
+    "chex>=0.1.90",
+    "hypothesis>=6.138.1",
+    "pyright>=1.1.403",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.12.9",
+]
+
+[tool.ruff]
+# Set the maximum line length to 120
+line-length = 120
+
+[tool.ruff.lint]
+# Add the `line-too-long` rule to the enforced rule set. By default, Ruff omits rules that
+# overlap with the use of a formatter, like Black, but we can override this behavior by
+# explicitly adding the rule.
+extend-select = ["E501"]
+
+
